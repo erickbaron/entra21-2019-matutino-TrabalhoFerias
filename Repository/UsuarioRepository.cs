@@ -14,10 +14,11 @@ namespace Repository
         public int Inserir(Usuario usuario)
         {
             SqlCommand command = Conexao.Conectar();
-            command.CommandText = @"INSERT INTO usuarios (nome, usuario_login, senha)
-VALUES (@NOME, @USUARIO_LOGIN, @SENHA)";
+            command.CommandText = @"INSERT INTO usuarios (nome, login, senha)
+OUTPUT INSERTED.ID VALUES 
+(@NOME, @LOGIN, @SENHA)";
             command.Parameters.AddWithValue("@NOME", usuario.Nome);
-            command.Parameters.AddWithValue("@USUARIO_LOGIN", usuario.Login);
+            command.Parameters.AddWithValue("@LOGIN", usuario.Login);
             command.Parameters.AddWithValue("@SENHA", usuario.Senha);
             int id = Convert.ToInt32(command.ExecuteScalar());
             command.Connection.Close();
@@ -38,7 +39,7 @@ VALUES (@NOME, @USUARIO_LOGIN, @SENHA)";
                 Usuario usuario = new Usuario();
                 usuario.Id = Convert.ToInt32(row["id"]);
                 usuario.Nome = row["nome"].ToString();
-                usuario.Login = row["usuario_login"].ToString();
+                usuario.Login = row["login"].ToString();
                 usuario.Senha = row["senha"].ToString();
                 usuarios.Add(usuario);
             }
@@ -73,7 +74,7 @@ VALUES (@NOME, @USUARIO_LOGIN, @SENHA)";
             Usuario usuario = new Usuario();
             usuario.Id = Convert.ToInt32(linha["id"]);
             usuario.Nome = linha["nome"].ToString();
-            usuario.Login = linha["usuario_login"].ToString();
+            usuario.Login = linha["login"].ToString();
             usuario.Senha = linha["senha"].ToString();
             return usuario;
         }
@@ -81,10 +82,12 @@ VALUES (@NOME, @USUARIO_LOGIN, @SENHA)";
         public bool Alterar(Usuario usuario)
         {
             SqlCommand command = Conexao.Conectar();
-            command.CommandText = "UPDATE usuarios SET nome = @NOME WHERE @ID = id";
+            command.CommandText = @"UPDATE usuarios SET
+nome = @NOME
+WHERE @ID = id";
             command.Parameters.AddWithValue("@NOME", usuario.Nome);
             command.Parameters.AddWithValue("@ID", usuario.Id);
-            command.Parameters.AddWithValue("@USUARIO_LOGIN", usuario.Login);
+            command.Parameters.AddWithValue("@LOGIN", usuario.Login);
             command.Parameters.AddWithValue("@SENHA", usuario.Senha);
             int quantidadeAfetada = command.ExecuteNonQuery();
             command.Connection.Close();

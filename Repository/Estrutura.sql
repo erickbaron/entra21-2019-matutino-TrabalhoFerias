@@ -1,10 +1,10 @@
 ﻿DROP TABLE tarefas, projetos, clientes,cidades, estados, usuarios, categorias;
-SELECT * FROM clientes; 
+/*SELECT * FROM clientes;*/ 
 
 CREATE TABLE usuarios (
 id INT PRIMARY KEY IDENTITY(1,1),
 nome VARCHAR (50),
-usuario_login VARCHAR(50),
+login VARCHAR(50),
 senha VARCHAR(50)
 );
 
@@ -38,7 +38,7 @@ data_nascimento DATETIME2(7),
 numero INT,
 complemento NCHAR(100),
 logradouro NCHAR(100),
-cep NCHAR(10),
+cep NCHAR(100),
 );
 
 CREATE TABLE projetos (

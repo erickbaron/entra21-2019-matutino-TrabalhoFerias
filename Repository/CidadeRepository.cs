@@ -62,11 +62,13 @@ OUTPUT INSERTED.ID VALUES
         public bool Alterar(Cidade cidade)
         {
             SqlCommand command = Conexao.Conectar();
-            command.CommandText = @"UPDATE cidades SET
-nome = @NOME,
+            command.CommandText = @"UPDATE cidades SET 
+nome = @NOME, 
+id_estado = @ID_ESTADO,
 numero_habitantes = @NUMERO_HABITANTES
-WHERE @ID = id";
+WHERE id = @ID";
             command.Parameters.AddWithValue("@ID", cidade.Id);
+            command.Parameters.AddWithValue("@ID_ESTADO", cidade.IdEstado);
             command.Parameters.AddWithValue("@NOME", cidade.Nome);
             command.Parameters.AddWithValue("@NUMERO_HABITANTES", cidade.NumeroHabitantes);
             int quantidadeAfetada = command.ExecuteNonQuery();
@@ -74,5 +76,30 @@ WHERE @ID = id";
             command.Connection.Close();
             return quantidadeAfetada == 1;
         }
+
+        public Cidade ObterPeloId(int id)
+        {
+            SqlCommand command = Conexao.Conectar();
+            command.CommandText = "SELECT * FROM cidades WHERE id = @ID";
+            command.Parameters.AddWithValue("@ID", id);
+            DataTable table = new DataTable();
+            table.Load(command.ExecuteReader());
+            command.Connection.Close();
+
+            if (table.Rows.Count == 0)
+            {
+                return null;
+            }
+
+            DataRow row = table.Rows[0];
+            Cidade cidade = new Cidade();
+            cidade.Id = Convert.ToInt32(row["id"]);
+            cidade.IdEstado = Convert.ToInt32(row["id_estado"]);
+            cidade.Nome = row["nome"].ToString();
+            cidade.NumeroHabitantes = Convert.ToInt32(row["numero_habitantes"]);
+
+            return cidade;
+        }
+
     }
 }

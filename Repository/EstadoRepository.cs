@@ -66,7 +66,7 @@ namespace Repository
             command.CommandText = @"UPDATE estados SET 
 nome = @NOME, 
 sigla = @SIGLA
-WHERE @ID = id";
+WHERE id = @ID";
             command.Parameters.AddWithValue("@ID", estado.Id);
             command.Parameters.AddWithValue("@NOME", estado.Nome);
             command.Parameters.AddWithValue("@SIGLA", estado.Sigla);
@@ -74,6 +74,28 @@ WHERE @ID = id";
 
             command.Connection.Close();
             return quantidadeAfetada == 1;
+        }
+
+        public Estado ObterPeloId(int id)
+        {
+            SqlCommand command = Conexao.Conectar();
+            command.CommandText = "SELECT * FROM estados WHERE id = @ID";
+            command.Parameters.AddWithValue("@ID", id);
+            DataTable table = new DataTable();
+            table.Load(command.ExecuteReader());
+            command.Connection.Close();
+
+            if (table.Rows.Count == 0)
+            {
+                return null;
+            }
+
+            DataRow row = table.Rows[0];
+            Estado estado = new Estado();
+            estado.Id = Convert.ToInt32(row["id"]);
+            estado.Nome = row["nome"].ToString();
+            estado.Sigla = row["sigla"].ToString();
+            return estado;
         }
     }
 }
