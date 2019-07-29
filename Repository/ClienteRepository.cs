@@ -11,7 +11,7 @@ namespace Repository
 {
     public class ClienteRepository
     {
-        public List<Cliente> ObterTodos()
+        public List<Cliente> ObterTodos()       
         {
             SqlCommand comando = Conexao.Conectar();
             comando.CommandText = "SELECT * FROM clientes";
