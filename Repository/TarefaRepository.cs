@@ -73,5 +73,51 @@ INNER JOIN usuarios ON (tarefas.id_usuario_responsavel = usuarios.id)
 
             return tarefas;
         }
+
+        public Tarefa ObterPeloId(int id)
+        {
+            SqlCommand comando = Conexao.Conectar();
+            comando.CommandText = "SELECT * FROM tarefas WHERE id = @ID";
+            comando.Parameters.AddWithValue("@ID", id);
+            DataTable tabela = new DataTable();
+            tabela.Load(comando.ExecuteReader());
+            comando.Connection.Close();
+            if (tabela.Rows.Count == 0)
+            {
+                return null;
+            }
+
+            DataRow linha = tabela.Rows[0];
+            Tarefa tarefa = new Tarefa();
+            tarefa.Id = Convert.ToInt32(linha["id"]);
+            tarefa.Titulo = linha["titulo"].ToString();
+            tarefa.Descricao = linha["descrição"].ToString();
+            tarefa.Duracao = Convert.ToDateTime(linha["duração"]);
+            return tarefa;
+        }
+
+        public bool Alterar(Tarefa tarefa)
+        {
+            SqlCommand comando = Conexao.Conectar();
+            comando.CommandText = "UPDATE tarefas SET nome = @NOME WHERE @ID = id";
+            comando.Parameters.AddWithValue("@TITULO", tarefa.Titulo);
+            comando.Parameters.AddWithValue("@ID", tarefa.Id);
+            comando.Parameters.AddWithValue("@DESCRICAO", tarefa.Descricao);
+            comando.Parameters.AddWithValue("@DURACAO", tarefa.Duracao);
+            int quantidadeAfetada = comando.ExecuteNonQuery();
+            comando.Connection.Close();
+            return quantidadeAfetada == 1;
+        }
+
+        public bool Apagar(int id)
+        {
+            SqlCommand comando = Conexao.Conectar();
+            comando.CommandText = "DELETE FROM clientes WHERE @ID = id";
+            comando.Parameters.AddWithValue("@ID", id);
+            int quantidadeAfetada = comando.ExecuteNonQuery();
+            comando.Connection.Close();
+            return quantidadeAfetada == 1;
+
+        }
     }
 }

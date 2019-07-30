@@ -42,5 +42,46 @@ VALUES (@NOME)";
             comando.Connection.Close();
             return id;
         }
+
+        public Categoria ObterPeloId(int id)
+        {
+            SqlCommand comando = Conexao.Conectar();
+            comando.CommandText = "SELECT * FROM categorias WHERE id = @ID";
+            comando.Parameters.AddWithValue("@ID", id);
+            DataTable tabela = new DataTable();
+            tabela.Load(comando.ExecuteReader()); ;
+            comando.Connection.Close();
+            if (tabela.Rows.Count == 0)
+            {
+                return null;
+            }
+
+            DataRow linha = tabela.Rows[0];
+            Categoria categoria = new Categoria();
+            categoria.Id = Convert.ToInt32(linha["id"]);
+            categoria.Nome = linha["nome"].ToString();
+            return categoria;
+        }
+
+        public bool Alterar(Categoria categoria)
+        {
+            SqlCommand comando = Conexao.Conectar();
+            comando.CommandText = "UPDATE categorias SET nome = @NOME WHERE @ID = id";
+            comando.Parameters.AddWithValue("@NOME", categoria.Nome);
+            comando.Parameters.AddWithValue("@ID", categoria.Id);
+            int quantidadeAfetada = comando.ExecuteNonQuery();
+            comando.Connection.Close();
+            return quantidadeAfetada == 1;
+        }
+
+        public bool Apagar(int id)
+        {
+            SqlCommand comando = Conexao.Conectar();
+            comando.CommandText = "DELETE FROM categorias WHERE @ID = id";
+            comando.Parameters.AddWithValue("@ID", id);
+            int quantidadeAfetada = comando.ExecuteNonQuery();
+            comando.Connection.Close();
+            return quantidadeAfetada == 1;
+        }
     }
 }
