@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<h3>Lista de Clientes</h3>
+<div class="row">
+    <div class="p-0 col-12">
+        <a href="/cliente/cadastro" class="btn btn-primary float-left mb-3">
+             Novo Cliente
+        </a>
+    </div>
+    <table class="table table-striped table-hover table-bordered">
+        <thead>
+            <tr>
+                <th class="border border-dark text-center bg-dark text-light">Cód.</th>
+                <th class="border border-dark text-center bg-dark text-light">Nome</th>
+                <th class="border border-dark text-center bg-dark text-light">CPF</th>
+                <th class="border border-dark text-center bg-dark text-light">Data de Nasc.</th>
+                <th class="border border-dark text-center bg-dark text-light">Cidade</th>
+                <th class="border border-dark text-center bg-dark text-light">Número</th>
+                <th class="border border-dark text-center bg-dark text-light">Complemento</th>
+                <th class="border border-dark text-center bg-dark text-light">Logradouro</th>
+                <th class="border border-dark text-center bg-dark text-light">CEP</th>
+                <th class="border border-dark text-center bg-dark text-light">Ação</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th class="border border-dark text-center bg-dark text-light">Cód.</th>
+                <th class="border border-dark text-center bg-dark text-light">Nome</th>
+                <th class="border border-dark text-center bg-dark text-light">CPF</th>
+                <th class="border border-dark text-center bg-dark text-light">Data de Nasc.</th>
+                <th class="border border-dark text-center bg-dark text-light">Cidade</th>
+                <th class="border border-dark text-center bg-dark text-light">Número</th>
+                <th class="border border-dark text-center bg-dark text-light">Complemento</th>
+                <th class="border border-dark text-center bg-dark text-light">Logradouro</th>
+                <th class="border border-dark text-center bg-dark text-light">CEP</th>
+                <th class="border border-dark text-center bg-dark text-light">Ação</th>
+
+            </tr>
+        </tfoot>
+        <tbody>
+
+            @foreach (Model.Cliente cliente in ViewBag.Clientes)
+            {
+                <tr>
+                    <td class="border border-dark text-center p-4">@cliente.Id</td>
+                    <td class="border border-dark text-center p-4">@cliente.Nome</td>
+                    <td class="border border-dark text-center p-4">@cliente.Cpf</td>
+                    <td class="border border-dark text-center p-4">@cliente.DataNascimento</td>
+                    <td class="border border-dark text-center p-4">@cliente.IdCidade</td>
+                    <td class="border border-dark text-center p-4">@cliente.Numero</td>
+                    <td class="border border-dark text-center p-4">@cliente.Complemento</td>
+                    <td class="border border-dark text-center p-4">@cliente.Logradouro</td>
+                    <td class="border border-dark text-center p-4">@cliente.Cep</td>
+                    <td class="border border-dark text-center ">
+                        <div class="btn-group d-flex justify-content-center  " role="group">
+                            <a href="/cliente/editar?id=@cliente.Id" class="btn btn-primary">Editar
+                            </a>
+                            <a href="/cliente/apagar?id=@cliente.Id" class="btn btn-danger">Apagar
+                            </a>
+                            </div>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+
+
+

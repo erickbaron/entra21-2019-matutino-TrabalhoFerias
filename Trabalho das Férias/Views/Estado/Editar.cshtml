@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Editar";
+}
+
+<h3>Editor de Estado</h3>
+
+<div class="row">
+    <a href="/estado/index" class="btn btn-primary float-left mb-3 far ">
+        Lista de Estados
+    </a>
+</div>
+
+<div class="row">
+    <form action="/estado/update" method="post">
+        <input type="hidden" name="id" value="@ViewBag.Estados.Id" />
+
+        <div  class="form-group">
+            <label for="campo-nome" class="col-3 pl-0">Nome</label>
+            <input type="text" name="nome" class="form-control" value="@ViewBag.Estados.Nome" />
+        </div>
+
+        <div  class="form-group">
+            <label for="campo-sigla" class="col-3 pl-0">Sigla</label>
+            <input type="text" name="sigla" class="form-control" value="@ViewBag.Estados.Sigla" />
+        </div>
+
+        <button class="btn btn-success mt-3" type="submit">Salvar</button>
+    </form>
+</div>
+

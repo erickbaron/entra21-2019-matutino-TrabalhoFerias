@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h3>Lista de Estados</h3>
+<div class="row">
+
+    <div class="col-12 p-0">
+        <a href="/estado/cadastro" class="btn btn-primary float-left mb-3 far ">
+            Novo Estado
+        </a>
+    </div>
+    <table class="table table-striped table-hover table-bordered border-dark">
+        <thead class="border border-dark">
+            <tr>
+                <th class="border border-dark text-center bg-dark text-light">Cód</th>
+                <th class="border border-dark text-center bg-dark text-light">Nome</th>
+                <th class="border border-dark text-center bg-dark text-light">Sigla</th>
+                <th class="border border-dark text-center bg-dark text-light">Ação</th>
+            </tr>
+        </thead>
+        <tfoot class="border border-dark">
+            <tr>
+                <th class="border border-dark text-center bg-dark text-light">Cód</th>
+                <th class="border border-dark text-center bg-dark text-light">Nome</th>
+                <th class="border border-dark text-center bg-dark text-light">Sigla</th>
+                <th class="border border-dark text-center bg-dark text-light">Ação</th>
+
+
+            </tr>
+        </tfoot>
+        <tbody class="border border-dark">
+            @foreach (Model.Estado estado in ViewBag.Estado)
+            {
+                <tr>
+                    <td class="border border-dark text-center p-4">@estado.Id</td>
+                    <td class="border border-dark text-center p-4">@estado.Nome</td>
+                    <td class="border border-dark text-center p-4">@estado.Sigla</td>
+                    <td class="border border-dark text-center ">
+                        <div class="btn-group d-flex justify-content-center  " role="group">
+                            <a href="/estado/editar?id=@estado.Id" class="btn btn-primary">Editar
+                            </a>
+                            <a href="/estado/apagar?id=@estado.Id" class="btn btn-danger">Apagar
+                            </a>
+                        </div>
+
+
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+    </div>
+
+

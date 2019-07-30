@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<h3>Lista de Usuários</h3>
+<div class="row">
+    <div class="p-0 col-12">
+        <a href="/usuario/cadastro" class="btn btn-primary float-left mb-3">
+            </i> Novo Usuário
+        </a>
+    </div>
+    <table class="table table-striped table-hover table-bordered">
+        <thead>
+            <tr>
+                <th class="border border-dark text-center bg-dark text-light">Cód</th>
+                <th class="border border-dark text-center bg-dark text-light">Nome</th>
+                <th class="border border-dark text-center bg-dark text-light">Login</th>
+                <th class="border border-dark text-center bg-dark text-light">Ação</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th class="border border-dark text-center bg-dark text-light">Cód</th>
+                <th class="border border-dark text-center bg-dark text-light">Nome</th>
+                <th class="border border-dark text-center bg-dark text-light">Login</th>
+                <th class="border border-dark text-center bg-dark text-light">Ação</th>
+
+            </tr>
+        </tfoot>
+        <tbody>
+
+            @foreach (Model.Usuario usuario in ViewBag.Usuarios)
+            {
+                <tr>
+                    <td class="border border-dark text-center p-4">@usuario.Id</td>
+                    <td class="border border-dark text-center p-4">@usuario.Nome</td>
+                    <td class="border border-dark text-center p-4">@usuario.Login</td>
+                    <td class="border border-dark text-center">
+                        <div class="btn-group d-flex justify-content-center  " role="group">
+                            <a href="/usuario/editar?id=@usuario.Id" class="btn btn-primary"> Editar
+                            </a>
+                            <a href="/usuario/apagar?id=@usuario.Id" class="btn btn-danger"> Apagar
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+
+
+
