@@ -67,8 +67,8 @@ VALUES (@NOME)";
         {
             SqlCommand comando = Conexao.Conectar();
             comando.CommandText = "UPDATE categorias SET nome = @NOME WHERE @ID = id";
-            comando.Parameters.AddWithValue("@NOME", categoria.Nome);
-            comando.Parameters.AddWithValue("@ID", categoria.Id);
+            comando.Parameters.AddWithValue("@NOME",categoria.Nome);
+            comando.Parameters.AddWithValue("@ID",categoria.Id);
             int quantidadeAfetada = comando.ExecuteNonQuery();
             comando.Connection.Close();
             return quantidadeAfetada == 1;

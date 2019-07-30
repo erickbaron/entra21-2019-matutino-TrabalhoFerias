@@ -11,6 +11,32 @@ namespace Repository
 {
     public class ClienteRepository
     {
+        public List<Cliente> ObterTodos()       
+        {
+            SqlCommand comando = Conexao.Conectar();
+            comando.CommandText = "SELECT * FROM clientes";
+            DataTable tabela = new DataTable();
+            tabela.Load(comando.ExecuteReader());
+
+            List<Cliente> clientes = new List<Cliente>();
+
+            foreach (DataRow linha in tabela.Rows)
+            {
+                Cliente cliente = new Cliente();
+                cliente.Id = Convert.ToInt32(linha["id"]);
+                cliente.Nome = linha["nome"].ToString();
+                cliente.Cpf = linha["cpf"].ToString();
+                cliente.DataNascimento = Convert.ToDateTime(linha["data_nascimento"].ToString());
+                cliente.Numero = Convert.ToInt32(linha["numero"].ToString());
+                cliente.Complemento = linha["complemento"].ToString();
+                cliente.Logradouro = linha["logradouro"].ToString();
+                cliente.Cep = linha["cep"].ToString();
+                clientes.Add(cliente);
+            }
+            comando.Connection.Close();
+            return clientes;
+        }
+
         public int Inserir(Cliente cliente)
         {
             SqlCommand comando = Conexao.Conectar();
@@ -28,32 +54,6 @@ OUTPUT INSERTED.ID VALUES
             int id = Convert.ToInt32(comando.ExecuteScalar());
             comando.Connection.Close();
             return id;
-        }
-
-        public List<Cliente> ObterTodos()
-        {
-            SqlCommand command = Conexao.Conectar();
-            command.CommandText = "SELECT * FROM clientes";
-            DataTable table = new DataTable();
-            table.Load(command.ExecuteReader());
-
-            List<Cliente> clientes = new List<Cliente>();
-
-            foreach (DataRow row in table.Rows)
-            {
-                Cliente cliente = new Cliente();
-                cliente.Id = Convert.ToInt32(row["id"]);
-                cliente.Nome = row["nome"].ToString();
-                cliente.Cpf = row["cpf"].ToString();
-                cliente.DataNascimento = Convert.ToDateTime(row["data_nascimento"].ToString());
-                cliente.Numero = Convert.ToInt32(row["numero"].ToString());
-                cliente.Complemento = row["complemento"].ToString();
-                cliente.Logradouro = row["logradouro"].ToString();
-                cliente.Cep = row["cep"].ToString();
-                clientes.Add(cliente);
-            }
-            command.Connection.Close();
-            return clientes;
         }
 
         public Cliente ObterPeloId(int id)

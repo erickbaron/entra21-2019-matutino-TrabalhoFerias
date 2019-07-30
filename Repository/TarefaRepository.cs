@@ -87,7 +87,7 @@ INNER JOIN usuarios ON (tarefas.id_usuario_responsavel = usuarios.id)
                 return null;
             }
 
-            DataRow linha = tabela.Rows[0];
+            DataRow linha = tabela.Rows[0]; 
             Tarefa tarefa = new Tarefa();
             tarefa.Id = Convert.ToInt32(linha["id"]);
             tarefa.Titulo = linha["titulo"].ToString();
@@ -100,10 +100,10 @@ INNER JOIN usuarios ON (tarefas.id_usuario_responsavel = usuarios.id)
         {
             SqlCommand comando = Conexao.Conectar();
             comando.CommandText = "UPDATE tarefas SET nome = @NOME WHERE @ID = id";
-            comando.Parameters.AddWithValue("@TITULO", tarefa.Titulo);
-            comando.Parameters.AddWithValue("@ID", tarefa.Id);
-            comando.Parameters.AddWithValue("@DESCRICAO", tarefa.Descricao);
-            comando.Parameters.AddWithValue("@DURACAO", tarefa.Duracao);
+            comando.Parameters.AddWithValue("@TITULO",tarefa.Titulo);
+            comando.Parameters.AddWithValue("@ID",tarefa.Id);
+            comando.Parameters.AddWithValue("@DESCRICAO",tarefa.Descricao);
+            comando.Parameters.AddWithValue("@DURACAO",tarefa.Duracao);
             int quantidadeAfetada = comando.ExecuteNonQuery();
             comando.Connection.Close();
             return quantidadeAfetada == 1;
