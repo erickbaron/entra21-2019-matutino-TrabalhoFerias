@@ -4,3 +4,9 @@ C:\Users\erick\source\repos\View\Model\obj\Debug\Model.csprojAssemblyReference.c
 C:\Users\erick\source\repos\View\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
 C:\Users\erick\source\repos\View\Model\obj\Debug\Model.dll
 C:\Users\erick\source\repos\View\Model\obj\Debug\Model.pdb
+C:\Users\Alunos\Downloads\Trabalho\Model\bin\Debug\Model.dll
+C:\Users\Alunos\Downloads\Trabalho\Model\bin\Debug\Model.pdb
+C:\Users\Alunos\Downloads\Trabalho\Model\obj\Debug\Model.csprojAssemblyReference.cache
+C:\Users\Alunos\Downloads\Trabalho\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+C:\Users\Alunos\Downloads\Trabalho\Model\obj\Debug\Model.dll
+C:\Users\Alunos\Downloads\Trabalho\Model\obj\Debug\Model.pdb

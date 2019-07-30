@@ -1,4 +1,4 @@
-﻿DROP TABLE tarefas, projetos, clientes,cidades, estados, usuarios, categorias;
+﻿DROP TABLE IF EXISTS tarefas, projetos, clientes,cidades, estados, usuarios, categorias;
 /*SELECT * FROM clientes;*/ 
 
 CREATE TABLE usuarios (

@@ -7,3 +7,12 @@ C:\Users\erick\source\repos\View\Repository\obj\Debug\Repository.csproj.CoreComp
 C:\Users\erick\source\repos\View\Repository\obj\Debug\Repository.csproj.CopyComplete
 C:\Users\erick\source\repos\View\Repository\obj\Debug\Repository.dll
 C:\Users\erick\source\repos\View\Repository\obj\Debug\Repository.pdb
+C:\Users\Alunos\Downloads\Trabalho\Repository\bin\Debug\Repository.dll
+C:\Users\Alunos\Downloads\Trabalho\Repository\bin\Debug\Repository.pdb
+C:\Users\Alunos\Downloads\Trabalho\Repository\bin\Debug\Model.dll
+C:\Users\Alunos\Downloads\Trabalho\Repository\bin\Debug\Model.pdb
+C:\Users\Alunos\Downloads\Trabalho\Repository\obj\Debug\Repository.csprojAssemblyReference.cache
+C:\Users\Alunos\Downloads\Trabalho\Repository\obj\Debug\Repository.csproj.CoreCompileInputs.cache
+C:\Users\Alunos\Downloads\Trabalho\Repository\obj\Debug\Repository.csproj.CopyComplete
+C:\Users\Alunos\Downloads\Trabalho\Repository\obj\Debug\Repository.dll
+C:\Users\Alunos\Downloads\Trabalho\Repository\obj\Debug\Repository.pdb
