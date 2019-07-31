@@ -1,7 +1,58 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+                /**/
+
+                ViewBag.Title = "Lista de tarefas";
 }
-
-<h2>Index</h2>
-
+<h3>Lista de Tarefas</h3>
+<div class="p-0 col-12">
+    <a href="/tarefa/cadastro" class="btn btn-primary float-left mb-3">
+        Nova Tarefa
+    </a>
+</div>
+<table class="table table-striped table-hover table-bordered">
+    <thead>
+        <tr>
+            <td class="border border-dark text-center bg-dark text-light">Código</td>
+            <td class="border border-dark text-center bg-dark text-light">Título</td>
+            <td class="border border-dark text-center bg-dark text-light">Descrição</td>
+            <td class="border border-dark text-center bg-dark text-light">Duração</td>
+            <td class="border border-dark text-center bg-dark text-light">Usuário</td>
+            <td class="border border-dark text-center bg-dark text-light">Projeto</td>
+            <td class="border border-dark text-center bg-dark text-light">Categoria</td>
+            <td class="border border-dark text-center bg-dark text-light">Ação</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Model.Tarefa tarefa in ViewBag.Tarefas)
+        {
+            <tr>
+                <td class="border border-dark text-center p-4">@tarefa.Id</td>
+                <td class="border border-dark text-center p-4">@tarefa.Titulo</td>
+                <td class="border border-dark text-center p-4">@tarefa.Descricao</td>
+                <td class="border border-dark text-center p-4">@tarefa.Duracao.ToShortTimeString()</td>
+                <td class="border border-dark text-center p-4">@tarefa.IdUsuarioResponsavel</td>
+                <td class="border border-dark text-center p-4">@tarefa.IdProjeto</td>
+                <td class="border border-dark text-center p-4">@tarefa.IdCategoria</td>
+                <td class="border border-dark text-center ">
+                    <div class="btn-group d-flex justify-content-center  " role="group">
+                        <a href="/tarefa/editar?id=@tarefa.Id" class="btn btn-primary">Editar</a>
+                        <a href="/tarefa/apagar?id=@tarefa.Id" class="btn btn-danger">Apagar</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td class="border border-dark text-center bg-dark text-light">Código</td>
+            <td class="border border-dark text-center bg-dark text-light">Título</td>
+            <td class="border border-dark text-center bg-dark text-light">Descrição</td>
+            <td class="border border-dark text-center bg-dark text-light">Duração</td>
+            <td class="border border-dark text-center bg-dark text-light">Usuário</td>
+            <td class="border border-dark text-center bg-dark text-light">Projeto</td>
+            <td class="border border-dark text-center bg-dark text-light">Categoria</td>
+            <td class="border border-dark text-center bg-dark text-light">Ação</td>
+        </tr>
+    </tfoot>
+</table>

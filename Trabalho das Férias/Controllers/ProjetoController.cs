@@ -56,7 +56,7 @@ namespace View.Controllers
         public ActionResult Editar(int id)
         {
             Projeto projeto = repository.ObterPeloId(id);
-            ViewBag.Projeto = projeto;
+            ViewBag.Projetos = projeto;
 
             ClienteRepository clienteRepository = new ClienteRepository();
             List<Cliente> clientes = clienteRepository.ObterTodos();

@@ -1,5 +1,6 @@
 ﻿DROP TABLE IF EXISTS tarefas, projetos, clientes,cidades, estados, usuarios, categorias;
-/*SELECT * FROM clientes;*/ 
+
+SELECT * FROM tarefas;
 
 CREATE TABLE usuarios (
 id INT PRIMARY KEY IDENTITY(1,1),

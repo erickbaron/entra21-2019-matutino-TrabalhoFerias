@@ -14,7 +14,7 @@ namespace Repository
         {
             
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Alunos\Downloads\Trabalho\Trabalho das Férias\App_Data\BDTrabalho.mdf;Integrated Security=True;Connect Timeout=30";
+            connection.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\erick\Documents\BDTRABALHO.mdf;Integrated Security=True;Connect Timeout=30";
             connection.Open();
 
             SqlCommand command = new SqlCommand();

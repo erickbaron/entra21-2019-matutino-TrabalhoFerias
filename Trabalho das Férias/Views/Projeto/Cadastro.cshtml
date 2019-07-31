@@ -2,6 +2,43 @@
 @{
     ViewBag.Title = "Cadastro";
 }
+<h3>Cadastro de Projeto</h3>
 
-<h2>Cadastro</h2>
+<div class="row">
+    <a href="/projeto/index" class="btn btn-primary float-left mb-3 ">
+        Lista de Projetos
+    </a>
+</div>
 
+<div class="row">
+    <form method="post" action="/projeto/store">
+        <div class="form-group">
+            <label form="campo-cliente">Cliente</label>
+            <select class="form-control" name="cliente">
+                <option disabled="disabled" selected="selected">Selecione um cliente</option>
+                @foreach (Model.Cliente cliente in ViewBag.Clientes)
+                {
+                    <option value="@cliente.Id">@cliente.Nome</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="campo-Nome">Nome</label>
+            <input type="text" name="nome" id="campo-nome" class="form-control"/>
+        </div>
+
+        <div class="form-group">
+            <label for="campo-dataCriacao">Data de 
+            Criação</label>
+            <input type="date" name="dataCriacao" id="campo-dataCriacao" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="campo-dataFinalizacao">Data de Finalização</label>
+            <input type="date" name="dataFinalizacao" id="campo-dataFinalizacao" class="form-control"/>
+        </div>
+
+        <button type="submit" class="btn btn-success mt-3">Salvar</button>
+    </form>
+</div>

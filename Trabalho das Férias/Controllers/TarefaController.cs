@@ -11,6 +11,7 @@ namespace View.Controllers
     public class TarefaController : Controller
     {
         private TarefaRepository repository;
+
         public TarefaController()
         {
             repository = new TarefaRepository();
@@ -27,13 +28,13 @@ namespace View.Controllers
         {
             UsuarioRepository usuarioRepository = new UsuarioRepository();
             List<Usuario> usuarios = usuarioRepository.ObterTodos();
-            ViewBag.Usuario = usuarios;
+            ViewBag.Usuarios = usuarios;
             ProjetoRepository projetoRepository = new ProjetoRepository();
             List<Projeto> projetos = projetoRepository.ObterTodos();
-            ViewBag.Projeto = projetos;
+            ViewBag.Projetos = projetos;
             CategoriaRepository categoriaRepository = new CategoriaRepository();
             List<Categoria> categorias = categoriaRepository.ObterTodos();
-            ViewBag.Categoria = categorias;
+            ViewBag.Categorias = categorias;
             return View();
         }
 
@@ -59,16 +60,20 @@ namespace View.Controllers
         public ActionResult Editar(int id)
         {
             Tarefa tarefa = repository.ObterPeloId(id);
-            ViewBag.Tarefa = tarefa;
+            ViewBag.Tarefas = tarefa;
+
             UsuarioRepository usuarioRepository = new UsuarioRepository();
             List<Usuario> usuarios = usuarioRepository.ObterTodos();
-            ViewBag.Usuario = usuarios;
+            ViewBag.Usuarios = usuarios;
+
             ProjetoRepository projetoRepository = new ProjetoRepository();
             List<Projeto> projetos = projetoRepository.ObterTodos();
-            ViewBag.Projeto = projetos;
+            ViewBag.Projetos = projetos;
+
             CategoriaRepository categoriaRepository = new CategoriaRepository();
             List<Categoria> categorias = categoriaRepository.ObterTodos();
-            ViewBag.Categoria = categorias;
+            ViewBag.Categorias = categorias;
+
             return View();
         }
 
@@ -82,6 +87,7 @@ namespace View.Controllers
             tarefa.IdUsuarioResponsavel = usuario;
             tarefa.IdProjeto = projeto;
             tarefa.IdCategoria = categoria;
+
             repository.Alterar(tarefa);
             return RedirectToAction("Index");
         }

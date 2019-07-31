@@ -17,7 +17,6 @@ namespace Repository
             comando.CommandText = "SELECT * FROM projetos";
             DataTable tabela = new DataTable();
             tabela.Load(comando.ExecuteReader());
-
             List<Projeto> projetos = new List<Projeto>();
 
             foreach (DataRow linha in tabela.Rows)
@@ -25,21 +24,23 @@ namespace Repository
                 Projeto projeto = new Projeto();
                 projeto.Id = Convert.ToInt32(linha["id"]);
                 projeto.Nome = linha["nome"].ToString();
-                projeto.DataCriacao = Convert.ToDateTime(linha["data_criacao"]);
-                projeto.DataFinalizacao = Convert.ToDateTime(linha["data_finalizacao"]);
+                projeto.IdCliente = Convert.ToInt32(linha["id_cliente"]);
+                projeto.DataCriacao = Convert.ToDateTime(linha["data_criacao"].ToString());
+                projeto.DataFinalizacao = Convert.ToDateTime(linha["data_finalizacao"].ToString());
                 projetos.Add(projeto);
             }
             comando.Connection.Close();
+
             return projetos;
         }
 
         public int Inserir(Projeto projeto)
         {
             SqlCommand comando = Conexao.Conectar();
-            comando.CommandText = "@INSERT INTO projetos (id_cliente, nome, data_criacao, data_finalizacao)" +
-                "OUTPUT INSERTED.ID VALUES" +
-                "(@ID_CLIENTE, @NOME, @DATA_CRIACAO, @DATA_FINALIZACAO)";
-            comando.Parameters.AddWithValue("@ID CLIENTE", projeto.IdCliente);
+            comando.CommandText = @"INSERT INTO projetos (id_cliente, nome, data_criacao, data_finalizacao)
+OUTPUT INSERTED.ID VALUES
+(@ID_CLIENTE, @NOME, @DATA_CRIACAO, @DATA_FINALIZACAO)";
+            comando.Parameters.AddWithValue("@ID_CLIENTE", projeto.IdCliente);
             comando.Parameters.AddWithValue("@NOME", projeto.Nome);
             comando.Parameters.AddWithValue("@DATA_CRIACAO", projeto.DataCriacao);
             comando.Parameters.AddWithValue("@DATA_FINALIZACAO", projeto.DataFinalizacao);
@@ -72,13 +73,19 @@ namespace Repository
         public bool Alterar(Projeto projeto)
         {
             SqlCommand comando = Conexao.Conectar();
-            comando.CommandText = "UPDATE projetos SET nome = @NOME WHERE @ID = id";
-            comando.Parameters.AddWithValue("@NOME", projeto.Nome);
+            comando.CommandText = @"UPDATE projetos SET
+nome = @NOME,
+id_cliente = ID_CLIENTE,
+data_criacao = @DATA_CRIACAO,
+data_finalizacao = @DATA_FINALIZACAO
+WHERE @ID = id";
             comando.Parameters.AddWithValue("@ID", projeto.Id);
+            comando.Parameters.AddWithValue("@ID_CLIENTE", projeto.IdCliente);
+            comando.Parameters.AddWithValue("@NOME", projeto.Nome);
             comando.Parameters.AddWithValue("@DATA_CRIACAO", projeto.DataCriacao);
             comando.Parameters.AddWithValue("@DATA_FINALIZACAO", projeto.DataFinalizacao);
             int quantidadeAfetada = comando.ExecuteNonQuery();
-            comando.CommandText.Clone();
+            comando.Connection.Close();
             return quantidadeAfetada == 1;
         }
 

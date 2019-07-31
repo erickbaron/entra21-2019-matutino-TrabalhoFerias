@@ -2,6 +2,46 @@
 @{
     ViewBag.Title = "Editar";
 }
+<h3 class="mt-20">Editor de Projetos</h3>
 
-<h2>Editar</h2>
+<div class="row">
+    <a href="/projeto/index" class="btn btn-primary float-left mb-3 ">
+        Lista de Cidades
+    </a>
+</div>
+<div class="row">
+    <form method="post" action="/projeto/update">
+        <input type="hidden" name="id" value="@ViewBag.Projetos.Id" />
 
+        <div class="form-group">
+            <label for="campo-nome">Nome</label>
+            <input type="text" name="nome" id="campo-nome" class="form-control" value="@ViewBag.Projetos.Nome" />
+        </div>
+
+        <div class="form-group">
+            <label for="campo-dataCriacao">Data de Criação</label>
+            <input type="date" name="dataCriacao"class="form-control" value="@ViewBag.Projetos.DataCriacao" />
+        </div>
+
+        <div class="form-group">
+            <label for="campo-dataFinalizacao">Data de Finalização</label>
+            <input type="date" name="dataFinalizacao"class="form-control" value="@ViewBag.Projetos.DataFinalizacao" />
+        </div>
+
+        <div class="form-group">
+            <label form="campo-cliente">Cliente</label>
+            <select class="form-control" name="cliente" values="@ViewBag.Projetos.IdCliente">
+                @foreach (Model.Cliente cliente in ViewBag.Clientes)
+                {
+                    <option value="@cliente.Id" selected="selected">@cliente.Nome</option>
+
+                }
+            </select>
+        </div>
+        <div class="btn-group">
+        <button type="submit" class="btn btn-success float-left">Salvar</button>
+        </div>
+
+
+    </form>
+</div>

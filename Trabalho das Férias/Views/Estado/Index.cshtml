@@ -1,6 +1,8 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+                /**/
+
+                ViewBag.Title = "Index";
 }
 
 <h3>Lista de Estados</h3>
@@ -39,9 +41,11 @@
                     <td class="border border-dark text-center p-4">@estado.Sigla</td>
                     <td class="border border-dark text-center ">
                         <div class="btn-group d-flex justify-content-center  " role="group">
-                            <a href="/estado/editar?id=@estado.Id" class="btn btn-primary">Editar
+                            <a href="/estado/editar?id=@estado.Id" class="btn btn-primary">
+                                Editar
                             </a>
-                            <a href="/estado/apagar?id=@estado.Id" class="btn btn-danger">Apagar
+                            <a href="/estado/apagar?id=@estado.Id" class="btn btn-danger">
+                                Apagar
                             </a>
                         </div>
 
@@ -52,6 +56,6 @@
             }
         </tbody>
     </table>
-    </div>
+</div>
 
 

@@ -2,6 +2,52 @@
 @{
     ViewBag.Title = "Index";
 }
+<h3>Lista de Projetos</h3>
+<div class="row mb-3">
+    <div class="col-12">
+        <a href="/projeto/cadastro" class="btn btn-primary float-left">Novo Projeto
+        </a>
+    </div>
+</div>
+<table class="table table-striped table-hover table-bordered">
+    <thead>
+        <tr>
+            <th class="border border-dark text-center bg-dark text-light">Código</th>
+            <th class="border border-dark text-center bg-dark text-light">Cliente</th>
+            <th class="border border-dark text-center bg-dark text-light">Nome</th>
+            <th class="border border-dark text-center bg-dark text-light">Data Criação</th>
+            <th class="border border-dark text-center bg-dark text-light">Data Finalização</th>
+            <th class="border border-dark text-center bg-dark text-light">Ação</th>
+        </tr>  
+    </thead>   
+    <tfoot>
+        <tr>
+            <th class="border border-dark text-center bg-dark text-light">Código</th>
+            <th class="border border-dark text-center bg-dark text-light">Cliente</th>
+            <th class="border border-dark text-center bg-dark text-light">Nome</th>
+            <th class="border border-dark text-center bg-dark text-light">Data Criação</th>
+            <th class="border border-dark text-center bg-dark text-light">Data Finalização</th>
+            <th class="border border-dark text-center bg-dark text-light">Ação</th>
+        </tr>
+    </tfoot>
+    <tbody>
+        @foreach (Model.Projeto projeto in ViewBag.Projetos)
+        {
+            <tr>
+                <td class="border border-dark text-center p-4">@projeto.Id</td>
+                <td class="border border-dark text-center p-4">@projeto.IdCliente</td>
+                <td class="border border-dark text-center p-4">@projeto.Nome</td>
+                <td class="border border-dark text-center p-4">@projeto.DataCriacao</td>
+                <td class="border border-dark text-center p-4">@projeto.DataFinalizacao</td>
+                <td class="border border-dark text-center ">
+                    <div class="btn-group">
+                    <a href="/projeto/editar?id=@projeto.Id" class="btn btn-primary">Editar</a>
+                    <a href="/projeto/apagar?id=@projeto.Id" class="btn btn-danger">Apagar</a>
+                    </div>
 
-<h2>Index</h2>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
 

@@ -16,3 +16,12 @@ C:\Users\Alunos\Downloads\Trabalho\Repository\obj\Debug\Repository.csproj.CoreCo
 C:\Users\Alunos\Downloads\Trabalho\Repository\obj\Debug\Repository.csproj.CopyComplete
 C:\Users\Alunos\Downloads\Trabalho\Repository\obj\Debug\Repository.dll
 C:\Users\Alunos\Downloads\Trabalho\Repository\obj\Debug\Repository.pdb
+C:\Users\erick\Documents\GitHub\entra21-2019-matutino-TrabalhoFerias\Repository\bin\Debug\Repository.dll
+C:\Users\erick\Documents\GitHub\entra21-2019-matutino-TrabalhoFerias\Repository\bin\Debug\Repository.pdb
+C:\Users\erick\Documents\GitHub\entra21-2019-matutino-TrabalhoFerias\Repository\bin\Debug\Model.dll
+C:\Users\erick\Documents\GitHub\entra21-2019-matutino-TrabalhoFerias\Repository\bin\Debug\Model.pdb
+C:\Users\erick\Documents\GitHub\entra21-2019-matutino-TrabalhoFerias\Repository\obj\Debug\Repository.csprojAssemblyReference.cache
+C:\Users\erick\Documents\GitHub\entra21-2019-matutino-TrabalhoFerias\Repository\obj\Debug\Repository.csproj.CoreCompileInputs.cache
+C:\Users\erick\Documents\GitHub\entra21-2019-matutino-TrabalhoFerias\Repository\obj\Debug\Repository.csproj.CopyComplete
+C:\Users\erick\Documents\GitHub\entra21-2019-matutino-TrabalhoFerias\Repository\obj\Debug\Repository.dll
+C:\Users\erick\Documents\GitHub\entra21-2019-matutino-TrabalhoFerias\Repository\obj\Debug\Repository.pdb
